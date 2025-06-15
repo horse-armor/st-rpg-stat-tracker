@@ -1,0 +1,22 @@
+<div class="rpg-stats-container">
+    {{#each stats as |charStats charId|}}
+        {{#each charStats as |categoryStats categoryName|}}
+            <h4>{{categoryName}}:</h4>
+            <ul class="rpg-stats-list">
+                {{#each categoryStats as |statData statId|}}
+                    {{#unless statData.hidden}}
+                        <li>
+                            <strong>{{statData.name}}:</strong> {{statData.value}}
+                            {{#if statData.effect}}
+                                <small>({{statData.effect}})</small>
+                            {{/if}}
+                            {{#if statData.showProgress}}
+                                <progress value="{{statData.ivalue}}" max="{{statData.max}}"></progress>
+                            {{/if}}
+                        </li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        {{/each}}
+    {{/each}}
+</div>

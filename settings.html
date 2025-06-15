@@ -1,0 +1,31 @@
+<div id="rpg_container" class="extension_container">
+    <div id="rpg_settings">
+        <div class="inline-drawer">
+            <div class="inline-drawer-toggle inline-drawer-header">
+                <b>
+                    RPG Stat Tracker
+                </b>
+                <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+            </div>
+            <div class="inline-drawer-content">
+                <label class="checkbox_label" for="rpg_enabled">
+                    <input type="checkbox" id="rpg_enabled" name="rpg_enabled">
+                    <small data-i18n="ext_rpg_enabled">Enabled</small>
+                </label>
+                <label class="checkbox_label" for="rpg_hallucinated_stats" title="If enabled, instructs the AI to create new stat fields that are not defined in the generation prompt.">
+                    <input id="rpg_hallucinated_stats" type="checkbox">
+                    <small data-i18n="ext_rpg_hallucinated_stats">Allow AI to create new stats</small>
+                </label>
+                <label class="checkbox_label" for="rpg_verbose_stats" title="If enabled, prints verbose stat changes to chat.">
+                    <input id="rpg_verbose_stats" type="checkbox">
+                    <small data-i18n="ext_rpg_verbose_stats">Verbose stat changes</small>
+                </label>
+                <br>
+                <label for="rpg_instruction_prompt">
+                    <small data-i18n="ext_rpg_instruction_prompt">Stat instruction prompt</small>
+                </label>
+                <textarea id="rpg_instruction_prompt" class="text_pole" rows="8"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
