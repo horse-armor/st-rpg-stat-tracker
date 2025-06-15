@@ -7,7 +7,7 @@ import { defaultInstructionPrompt, defaultInstructionPromptMajorVersion, extensi
 
 export const rpgSettings = {
     enabled: true,
-    allowHallucinated: false,
+    allowHallucinated: true,
     verboseStatChanges: false,
     instructionPrompt: defaultInstructionPrompt,
     instructionPromptVersion: defaultInstructionPromptMajorVersion,
@@ -33,9 +33,16 @@ export async function loadRpgSettings() {
     $("#extensions_settings").append(settingsHtml);
 
     $("#rpg_enabled").prop("checked", rpgSettings.enabled);
+    $("#rpg_enabled").on("change", onEnabledChange);
+
     $("#rpg_hallucinated_stats").prop("checked", rpgSettings.allowHallucinated);
+    $("#rpg_hallucinated_stats").on("change", onHallucinatedChange);
+
     $("#rpg_verbose_stats").prop("checked", rpgSettings.verboseStatChanges);
+    $("#rpg_verbose_stats").on("change", onVerboseChange);
+
     $("#rpg_instruction_prompt").val(rpgSettings.instructionPrompt);
+    $("#rpg_instruction_prompt").on("input", onInstructionPromptChange);
 }
 
 function onEnabledChange() {
@@ -61,10 +68,3 @@ function onInstructionPromptChange() {
     extension_settings[extensionName] = rpgSettings;
     saveSettingsDebounced();
 }
-
-$(document).ready(function () {
-    $("#rpg_enabled").on("change", onEnabledChange);
-    $("#rpg_hallucinated_stats").on("change", onHallucinatedChange);
-    $("#rpg_verbose_stats").on("change", onVerboseChange);
-    $("#rpg_instruction_prompt").on("input", onInstructionPromptChange);
-});
